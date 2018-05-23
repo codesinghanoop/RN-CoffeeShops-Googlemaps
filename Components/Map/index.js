@@ -95,7 +95,7 @@ export default class Map extends Component {
             pinColor="#2980b9"
             title="My Location"
           />
-          {!!this.state.coords
+          {this.state.coords && this.state.coords.length
             ? <MapView.Polyline
                 coordinates={this.state.coords}
                 strokeColor="#d35400"
@@ -105,6 +105,7 @@ export default class Map extends Component {
                 lineJoin="round"
               />
             : null}
+
           <MapView.Marker.Animated
             coordinate={{
               latitude: state.params.latitude,

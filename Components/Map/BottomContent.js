@@ -24,94 +24,93 @@ const BottomContent = ({
   hideBottomContent,
   getPolyCoordinate,
 }) => {
-  if (visible)
-    return (
-      <Animated.View
-        style={[
-          styles.bottomContainer,
-          {
-            transform: [
-              {
-                translateY: bounceValue,
-              },
-            ],
-          },
-        ]}
-      >
-        <View>
-          <View style={{flexDirection: 'row'}}>
-            <Image
-              style={{height: 90, width: itemWidth - 2}}
-              source={{uri: imageUrl}}
-            />
-            <View>
-              <Text style={{marginLeft: 15}}>
-                {name}
-              </Text>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  color: '#87ceeb',
-                  marginTop: 5,
-                  textDecorationLine: 'underline',
-                }}
-              >
-                {Covert (distance)}
-              </Text>
-              <Text
-                style={{
-                  marginLeft: 15,
-                  color: '#87ceeb',
-                  marginTop: 5,
-                  textDecorationLine: 'underline',
-                }}
-              >
-                {address[0]}
-              </Text>
-            </View>
+  if (!visible) return null;
+  return (
+    <Animated.View
+      style={[
+        styles.bottomContainer,
+        {
+          transform: [
+            {
+              translateY: bounceValue,
+            },
+          ],
+        },
+      ]}
+    >
+      <View>
+        <View style={{flexDirection: 'row'}}>
+          <Image
+            style={{height: 90, width: itemWidth - 2}}
+            source={{uri: imageUrl}}
+          />
+          <View>
+            <Text style={{marginLeft: 15}}>
+              {name}
+            </Text>
+            <Text
+              style={{
+                marginLeft: 15,
+                color: '#87ceeb',
+                marginTop: 5,
+                textDecorationLine: 'underline',
+              }}
+            >
+              {Covert (distance)}
+            </Text>
+            <Text
+              style={{
+                marginLeft: 15,
+                color: '#87ceeb',
+                marginTop: 5,
+                textDecorationLine: 'underline',
+              }}
+            >
+              {address[0]}
+            </Text>
           </View>
         </View>
-        <TouchableOpacity
+      </View>
+      <TouchableOpacity
+        style={{
+          height: 50,
+          width: 50,
+          position: 'absolute',
+          top: 10,
+          right: 0,
+          alignItems: 'center',
+        }}
+        onPress={() => hideBottomContent ()}
+      >
+        <Icon
+          name="times-circle"
           style={{
-            height: 50,
-            width: 50,
-            position: 'absolute',
-            top: 10,
-            right: 0,
-            alignItems: 'center',
+            backgroundColor: 'transparent',
           }}
-          onPress={() => hideBottomContent ()}
-        >
-          <Icon
-            name="times-circle"
-            style={{
-              backgroundColor: 'transparent',
-            }}
-            size={25}
-            color="gray"
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            height: 40,
-            width: width - 40,
-            borderRadius: 15,
-            backgroundColor: 'blue',
-            alignSelf: 'center',
-            bottom: 10,
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'absolute',
-          }}
-          onPress={() => getPolyCoordinate ()}
-        >
-          <Text style={{color: 'white'}}>
-            {' '}{'Directions'}
-          </Text>
-        </TouchableOpacity>
-      </Animated.View>
-    );
-  return null;
+          size={25}
+          color="gray"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={{
+          height: 40,
+          width: width - 40,
+          borderRadius: 15,
+          backgroundColor: 'blue',
+          alignSelf: 'center',
+          bottom: 10,
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+        }}
+        onPress={() => getPolyCoordinate ()}
+      >
+        <Text style={{color: 'white'}}>
+          {' '}{'Directions'}
+        </Text>
+      </TouchableOpacity>
+    </Animated.View>
+  );
 };
 
 const styles = StyleSheet.create ({
